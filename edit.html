@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="edit-container">
+        <h2>Editar Perfil</h2>
+        <form id="editForm">
+            <input type="text" id="editName" placeholder="Nome Completo" required>
+            <input type="text" id="editCpf" placeholder="CPF" required>
+            <input type="email" id="editEmail" placeholder="E-mail" required>
+            <input type="text" id="editPhone" placeholder="Telefone" required>
+            <input type="date" id="editDob" required>
+            <input type="password" id="editPassword" placeholder="Nova Senha">
+            <button type="submit">Salvar</button>
+        </form>
+        <button onclick="logout()">Sair</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
