@@ -93,3 +93,44 @@ function displayUsers() {
 if (document.getElementById('userList')) {
     displayUsers();
 }
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem('users')) || [];
+}
+
+function saveUsers(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+function displayUsers() {
+    const userList = document.getElementById('userList');
+    userList.innerHTML = ''; // Limpa a lista
+
+    const users = getUsers();
+
+    users.forEach((user, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <strong>${user.name}</strong> - ${user.email}<br>
+            <button onclick="deleteUser(${index})">Excluir</button>
+            <hr>
+        `;
+        userList.appendChild(li);
+    });
+}
+
+function deleteUser(index) {
+    const users = getUsers();
+
+    if (confirm(`Tem certeza que deseja excluir o usuário ${users[index].name}?`)) {
+        users.splice(index, 1); // remove 1 item na posição index
+        saveUsers(users); // salva de volta no localStorage
+        displayUsers(); // atualiza a lista na tela
+    }
+}
+
+// Chama isso quando a página carregar
+if (document.getElementById('userList')) {
+    displayUsers();
+}
+
